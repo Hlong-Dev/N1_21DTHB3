@@ -3,196 +3,856 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV - Nguyễn Thiện Nhân</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Ngô Duy Hoàng Long - Portfolio</title>
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        body {
+            color: #333;
+            background-color: #f8f8f8;
+            line-height: 1.6;
+        }
+
+        /* Luxury Elements */
+        .gold-text {
+            color: #d4af37;
+        }
+
+        .separator {
+            height: 1px;
+            width: 100px;
+            background: linear-gradient(to right, transparent, #d4af37, transparent);
+            margin: 15px auto;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1600/900') center/cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .header-content {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 40px;
+            border: 1px solid #d4af37;
+            max-width: 800px;
+        }
+
+        .name {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            letter-spacing: 3px;
+            font-weight: normal;
+        }
+
+        .title {
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #d4af37;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        section {
+            margin-bottom: 100px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            font-weight: normal;
+            letter-spacing: 2px;
+        }
+
+        /* About */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-image {
+            flex: 1;
+            border: 5px solid white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            height: 500px;
+            overflow: hidden;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .about-image img:hover {
+            transform: scale(1.05);
+        }
+
+        .about-text {
+            flex: 1;
+            padding: 30px;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-item {
+            margin-bottom: 15px;
+        }
+
+        .info-item strong {
+            color: #d4af37;
+        }
+
+        /* Education */
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: #d4af37;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: white;
+            border: 4px solid #d4af37;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-content h3 {
+            color: #d4af37;
+            margin-bottom: 10px;
+        }
+
+        .timeline-date {
+            font-style: italic;
+            color: #777;
+            margin-bottom: 15px;
+        }
+
+        /* Skills */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-category {
+            background-color: white;
+            padding: 30px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-10px);
+        }
+
+        .skill-category h3 {
+            color: #d4af37;
+            margin-bottom: 20px;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 20px;
+            text-align: left;
+        }
+
+        .skill-list li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: #d4af37;
+        }
+
+        /* Experiences */
+        .experience-card {
+            background-color: white;
+            padding: 30px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            border-left: 4px solid #d4af37;
+        }
+
+        .experience-title {
+            font-size: 1.3rem;
+            color: #d4af37;
+            margin-bottom: 5px;
+        }
+
+        .experience-company {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .experience-date {
+            font-style: italic;
+            color: #777;
+            margin-bottom: 15px;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: white;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            height: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+
+        .project-info {
+            padding: 20px;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            color: #d4af37;
+            margin-bottom: 10px;
+        }
+
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .contact-item {
+            background-color: white;
+            padding: 30px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            color: #d4af37;
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            color: #d4af37;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .footer-links li {
+            margin: 0 15px;
+        }
+
+        .footer-links li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links li a:hover {
+            color: #d4af37;
+        }
+
+        .footer-social {
+            margin-bottom: 20px;
+        }
+
+        .footer-social a {
+            display: inline-block;
+            margin: 0 10px;
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            line-height: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background-color: #d4af37;
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        /* Animation keyframes and scroll reveal */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .animate-fadeInUp {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .animate-fadeIn {
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        /* Responsive */
+        @media (max-width: 991px) {
+            .about-content {
+                flex-direction: column;
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-item:nth-child(odd)::after, 
+            .timeline-item:nth-child(even)::after {
+                left: 22px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .header-content {
+                padding: 30px 20px;
+            }
+
+            .name {
+                font-size: 2.5rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            section {
+                margin-bottom: 60px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
-        <header>
-            <div class="header-content">
-                <img src="IMG_1086.png" alt="Ảnh đại diện" class="avatar">
-                <h1 id="name">Lê Phi Ánh</h1>
-                <p id="job-title">Sinh viên ngành Công nghệ Thông tin - Đại học HUTECH</p>
-                <div class="social-links">
-                    <a href="https://github.com/HnaihP" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://facebook.com/lpa" target="_blank"><i class="fab fa-facebook"></i></a>
-                    <a href="mailto:phianhpr3@gmail.com"><i class="fas fa-envelope"></i></a>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#about">Giới thiệu</a></li>
+            <li><a href="#education">Học vấn</a></li>
+            <li><a href="#skills">Kỹ năng</a></li>
+            <li><a href="#experience">Kinh nghiệm</a></li>
+            <li><a href="#projects">Dự án</a></li>
+            <li><a href="#contact">Liên hệ</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="header-content animate-fadeIn">
+            <h1 class="name">NGÔ DUY HOÀNG <span class="gold-text">LONG</span></h1>
+            <div class="separator"></div>
+            <p class="title">SINH VIÊN NĂM 4 | ĐẠI HỌC HUTECH</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- About Section -->
+        <section id="about" class="animate-fadeInUp">
+            <h2 class="section-title">Giới <span class="gold-text">Thiệu</span></h2>
+            <div class="separator"></div>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://i.imgur.com/Tr9qnkI.jpeg" alt="Ngô Duy Hoàng Longggggg">
+                </div>
+                <div class="about-text">
+                    <p>Xin chào! Tôi là Ngô Duy Hoàng Long, một sinh viên năm cuối đam mê công nghệ và đổi mới. Với sự tò mò không ngừng và niềm đam mê học hỏi, tôi luôn tìm kiếm cơ hội để phát triển bản thân và đóng góp vào lĩnh vực công nghệ thông tin.</p>
+                    <br>
+                    <div class="info-item">
+                        <strong>Họ và tên:</strong> Ngô Duy Hoàng Long
+                    </div>
+                    <div class="info-item">
+                        <strong>Ngày sinh:</strong> 15/04/2003
+                    </div>
+                    <div class="info-item">
+                        <strong>Giới tính:</strong> Nam
+                    </div>
+                    <div class="info-item">
+                        <strong>Trường học:</strong> Đại học Hutech
+                    </div>
+                    <div class="info-item">
+                        <strong>Chuyên ngành:</strong> Công nghệ thông tin
+                    </div>
+                    <div class="info-item">
+                        <strong>Email:</strong> longhoang@example.com
+                    </div>
+                    <div class="info-item">
+                        <strong>Số điện thoại:</strong> 0912 345 678
+                    </div>
+                    <div class="info-item">
+                        <strong>Địa chỉ:</strong> Quận 9, TP. Hồ Chí Minh
+                    </div>
                 </div>
             </div>
-        </header>
-
-        <!-- Giới thiệu -->
-        <section class="about">
-            <h2>Giới thiệu</h2>
-            <p id="about-text">
-                Tôi là Nguyễn Thiện Nhân, một sinh viên năm cuối ngành Công nghệ Thông tin tại Đại học HUTECH. 
-                Với niềm đam mê công nghệ và sự kiên trì học hỏi, tôi đã tích lũy được nhiều kiến thức và kinh nghiệm 
-                trong lập trình, phân tích dữ liệu và phát triển ứng dụng. Tôi luôn tìm kiếm cơ hội để áp dụng những gì 
-                đã học vào thực tế và không ngừng cải thiện bản thân.
-            </p>
         </section>
 
-        <!-- Quá trình học tập -->
-        <section class="education">
-            <h2>Quá trình học tập</h2>
+        <!-- Education Section -->
+        <section id="education">
+            <h2 class="section-title">Học <span class="gold-text">Vấn</span></h2>
+            <div class="separator"></div>
             <div class="timeline">
                 <div class="timeline-item">
-                    <h3>Năm 1 - Khởi đầu</h3>
-                    <p>
-                        Làm quen với lập trình cơ bản thông qua ngôn ngữ C và Python. 
-                        Tham gia các hoạt động ngoại khóa và câu lạc bộ CNTT.
-                    </p>
+                    <div class="timeline-content">
+                        <h3>Đại học Hutech</h3>
+                        <div class="timeline-date">2021 - 2025</div>
+                        <p>Cử nhân Công nghệ thông tin</p>
+                        <p>Chuyên ngành: Phát triển phần mềm</p>
+                        <p>GPA: 3.8/4.0</p>
+                    </div>
                 </div>
                 <div class="timeline-item">
-                    <h3>Năm 2 - Phát triển kỹ năng</h3>
-                    <p>
-                        Học sâu hơn về cấu trúc dữ liệu, giải thuật và cơ sở dữ liệu. 
-                        Bắt đầu tham gia các dự án nhỏ về phát triển web và ứng dụng.
-                    </p>
+                    <div class="timeline-content">
+                        <h3>THPT Nguyễn Hữu Huân</h3>
+                        <div class="timeline-date">2018 - 2021</div>
+                        <p>Tốt nghiệp THPT</p>
+                        <p>Chuyên ban: Toán - Tin học</p>
+                        <p>Điểm thi THPT Quốc gia: 26.5/30</p>
+                    </div>
                 </div>
                 <div class="timeline-item">
-                    <h3>Năm 3 - Chuyên sâu</h3>
-                    <p>
-                        Tập trung vào các môn học chuyên ngành như Machine Learning, 
-                        Phân tích dữ liệu và Phát triển ứng dụng di động. 
-                        Tham gia các cuộc thi hackathon và dự án nhóm.
-                    </p>
+                    <div class="timeline-content">
+                        <h3>Khóa học Udemy</h3>
+                        <div class="timeline-date">2022</div>
+                        <p>Chứng chỉ Web Development Bootcamp</p>
+                        <p>HTML, CSS, JavaScript, React</p>
+                        <p>Đã hoàn thành: 20 dự án thực tế</p>
+                    </div>
                 </div>
                 <div class="timeline-item">
-                    <h3>Năm 4 - Hoàn thiện</h3>
-                    <p>
-                        Thực hiện đồ án tốt nghiệp về ứng dụng AI trong phân tích dữ liệu. 
-                        Tích lũy kinh nghiệm thực tế thông qua thực tập tại các công ty công nghệ.
-                    </p>
+                    <div class="timeline-content">
+                        <h3>FreeCodeCamp</h3>
+                        <div class="timeline-date">2023</div>
+                        <p>Chứng chỉ JavaScript Algorithms and Data Structures</p>
+                        <p>Đã hoàn thành: 5 dự án thực tế</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Kỹ năng -->
-        <section class="skills">
-            <h2>Kỹ năng</h2>
-            <div class="skill-cards">
-                <div class="skill-card">
-                    <h3>Lập trình</h3>
-                    <ul>
-                        <li>Python, Java, C++</li>
-                        <li>JavaScript, HTML, CSS</li>
-                        <li>React, Node.js</li>
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2 class="section-title">Kỹ <span class="gold-text">Năng</span></h2>
+            <div class="separator"></div>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Lập Trình</h3>
+                    <ul class="skill-list">
+                        <li>HTML/CSS</li>
+                        <li>JavaScript</li>
+                        <li>React</li>
+                        <li>Node.js</li>
+                        <li>Java</li>
+                        <li>Python</li>
                     </ul>
                 </div>
-                <div class="skill-card">
-                    <h3>Phân tích dữ liệu</h3>
-                    <ul>
-                        <li>SQL, Pandas, NumPy</li>
-                        <li>Machine Learning</li>
-                        <li>Data Visualization</li>
+                <div class="skill-category">
+                    <h3>Cơ Sở Dữ Liệu</h3>
+                    <ul class="skill-list">
+                        <li>MySQL</li>
+                        <li>MongoDB</li>
+                        <li>PostgreSQL</li>
+                        <li>Firebase</li>
                     </ul>
                 </div>
-                <div class="skill-card">
-                    <h3>Công cụ</h3>
-                    <ul>
-                        <li>Git, GitHub</li>
-                        <li>Docker, Kubernetes</li>
-                        <li>VS Code, Jupyter Notebook</li>
+                <div class="skill-category">
+                    <h3>Công Cụ</h3>
+                    <ul class="skill-list">
+                        <li>Git & GitHub</li>
+                        <li>VS Code</li>
+                        <li>Docker</li>
+                        <li>Figma</li>
+                        <li>Adobe Photoshop</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Kỹ Năng Mềm</h3>
+                    <ul class="skill-list">
+                        <li>Làm việc nhóm</li>
+                        <li>Giao tiếp</li>
+                        <li>Giải quyết vấn đề</li>
+                        <li>Quản lý thời gian</li>
+                        <li>Tư duy phản biện</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <!-- Dự án tiêu biểu -->
-        <section class="projects">
-            <h2>Dự án tiêu biểu</h2>
-            <div class="project-list">
-                <div class="project-item">
-                    <h3>Hệ thống quản lý thư viện</h3>
-                    <p>
-                        Phát triển hệ thống quản lý thư viện sử dụng Python và SQL. 
-                        Hỗ trợ quản lý sách, mượn/trả sách và thống kê dữ liệu.
-                    </p>
+        <!-- Experience Section -->
+        <section id="experience">
+            <h2 class="section-title">Kinh <span class="gold-text">Nghiệm</span></h2>
+            <div class="separator"></div>
+            <div class="experience-container">
+                <div class="experience-card">
+                    <h3 class="experience-title">Thực Tập Sinh Frontend Developer</h3>
+                    <div class="experience-company">Công ty TNHH Phần Mềm ABC</div>
+                    <div class="experience-date">06/2023 - 09/2023</div>
+                    <p>Tham gia phát triển giao diện người dùng cho ứng dụng web thương mại điện tử sử dụng React và Redux. Tối ưu hóa hiệu suất và trải nghiệm người dùng trên nhiều thiết bị.</p>
+                    <ul>
+                        <li>Phát triển 5+ tính năng mới cho trang web</li>
+                        <li>Cải thiện tốc độ tải trang lên 40%</li>
+                        <li>Làm việc trong nhóm phát triển 8 người</li>
+                    </ul>
                 </div>
-                <div class="project-item">
-                    <h3>Website bán hàng</h3>
-                    <p>
-                        Xây dựng website bán hàng sử dụng React và Node.js. 
-                        Tích hợp thanh toán trực tuyến và quản lý đơn hàng.
-                    </p>
+                <div class="experience-card">
+                    <h3 class="experience-title">Cộng Tác Viên Thiết Kế Web</h3>
+                    <div class="experience-company">Startup XYZ Tech</div>
+                    <div class="experience-date">01/2023 - 05/2023</div>
+                    <p>Thiết kế và phát triển trang web giới thiệu doanh nghiệp cho các công ty nhỏ và startup. Tập trung vào thiết kế đáp ứng và trải nghiệm người dùng tối ưu.</p>
+                    <ul>
+                        <li>Hoàn thành 3 dự án website cho khách hàng</li>
+                        <li>Tham gia vào quá trình thiết kế UX/UI</li>
+                        <li>Nhận phản hồi tích cực từ 100% khách hàng</li>
+                    </ul>
                 </div>
-                <div class="project-item">
-                    <h3>Phân tích dữ liệu COVID-19</h3>
-                    <p>
-                        Phân tích và trực quan hóa dữ liệu COVID-19 sử dụng Python và thư viện Matplotlib.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Kinh nghiệm thực tế -->
-        <section class="experience">
-            <h2>Kinh nghiệm thực tế</h2>
-            <div class="experience-list">
-                <div class="experience-item">
-                    <h3>Thực tập tại FPT Software</h3>
-                    <p>
-                        Tham gia phát triển ứng dụng quản lý dự án sử dụng Java và Spring Boot. 
-                        Hỗ trợ phân tích yêu cầu và kiểm thử phần mềm.
-                    </p>
-                </div>
-                <div class="experience-item">
-                    <h3>Freelancer</h3>
-                    <p>
-                        Phát triển website và ứng dụng nhỏ cho khách hàng cá nhân. 
-                        Sử dụng React, Node.js và MongoDB.
-                    </p>
+                <div class="experience-card">
+                    <h3 class="experience-title">Dự Án Sinh Viên</h3>
+                    <div class="experience-company">Đại học Hutech</div>
+                    <div class="experience-date">09/2022 - 12/2022</div>
+                    <p>Phát triển hệ thống quản lý thư viện trực tuyến cho trường đại học. Ứng dụng được sử dụng bởi sinh viên và nhân viên thư viện để quản lý sách và phiếu mượn trả.</p>
+                    <ul>
+                        <li>Phụ trách phát triển backend với Node.js</li>
+                        <li>Xây dựng cơ sở dữ liệu MongoDB</li>
+                        <li>Nhận điểm A cho dự án</li>
+                    </ul>
                 </div>
             </div>
         </section>
 
-        <!-- Giải thưởng -->
-        <section class="awards">
-            <h2>Giải thưởng</h2>
-            <div class="awards-list">
-                <div class="award-item">
-                    <h3>Giải nhì Hackathon HUTECH 2023</h3>
-                    <p>
-                        Đề tài: Ứng dụng AI trong quản lý năng lượng thông minh.
-                    </p>
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2 class="section-title">Dự <span class="gold-text">Án</span></h2>
+            <div class="separator"></div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="/api/placeholder/600/400" alt="Dự án 1">
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Ứng dụng Quản lý Chi tiêu</h3>
+                        <p>Ứng dụng web giúp người dùng theo dõi chi tiêu hàng ngày, phân loại và tạo báo cáo thống kê. Sử dụng React, Node.js và MongoDB.</p>
+                    </div>
                 </div>
-                <div class="award-item">
-                    <h3>Học bổng sinh viên xuất sắc</h3>
-                    <p>
-                        Nhận học bổng 2 năm liên tiếp vì thành tích học tập xuất sắc.
-                    </p>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="/api/placeholder/600/400" alt="Dự án 2">
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Website Thương mại điện tử</h3>
+                        <p>Xây dựng cửa hàng trực tuyến với tính năng giỏ hàng, thanh toán và quản lý sản phẩm. Sử dụng MERN stack (MongoDB, Express, React, Node.js).</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="/api/placeholder/600/400" alt="Dự án 3">
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Ứng dụng Nhắc việc</h3>
+                        <p>Ứng dụng di động xây dựng bằng React Native giúp người dùng quản lý công việc, đặt lịch nhắc nhở và theo dõi tiến độ.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Kỹ năng mềm -->
-        <section class="soft-skills">
-            <h2>Kỹ năng mềm</h2>
-            <div class="soft-skills-list">
-                <ul>
-                    <li>Làm việc nhóm</li>
-                    <li>Quản lý thời gian</li>
-                    <li>Giao tiếp hiệu quả</li>
-                    <li>Giải quyết vấn đề</li>
-                </ul>
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2 class="section-title">Liên <span class="gold-text">Hệ</span></h2>
+            <div class="separator"></div>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <h3>Email</h3>
+                    <p>longhoang@example.com</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <h3>Điện thoại</h3>
+                    <p>0912 345 678</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <h3>Địa chỉ</h3>
+                    <p>Quận 9, TP. Hồ Chí Minh</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">💼</div>
+                    <h3>LinkedIn</h3>
+                    <p>linkedin.com/in/longhoang</p>
+                </div>
             </div>
         </section>
+    </main>
 
-        <!-- Liên hệ -->
-        <section class="contact">
-            <h2>Liên hệ</h2>
-            <div class="contact-info">
-                <p>Email: <a href="mailto:phianhpr3@gmail.com">phianhpr3@gmail.com</a></p>
-                <p>GitHub: <a href="https://github.com/HnaihP">HnaihP</a></p>
-                <p>Facebook: <a href="https://facebook.com/lpa">Lê Phi Ánh</a></p>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">NDH LONG</div>
+            <ul class="footer-links">
+                <li><a href="#about">Giới thiệu</a></li>
+                <li><a href="#education">Học vấn</a></li>
+                <li><a href="#skills">Kỹ năng</a></li>
+                <li><a href="#experience">Kinh nghiệm</a></li>
+                <li><a href="#projects">Dự án</a></li>
+                <li><a href="#contact">Liên hệ</a></li>
+            </ul>
+            <div class="footer-social">
+                <a href="#">FB</a>
+                <a href="#">IG</a>
+                <a href="#">LI</a>
+                <a href="#">GH</a>
             </div>
-        </section>
-    </div>
+            <div class="copyright">
+                &copy; 2025 Ngô Duy Hoàng Long. Tất cả quyền được bảo lưu.
+            </div>
+        </div>
+    </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('section');
+            
+            function checkVisibility() {
+                sections.forEach(section => {
+                    const sectionTop = section.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (sectionTop < windowHeight * 0.75) {
+                        section.classList.add('visible');
+                    }
+                });
+            }
+            
+            // Initial check
+            checkVisibility();
+            
+            // Check on scroll
+            window.addEventListener('scroll', checkVisibility);
+            
+            // Sticky navigation
+            const nav = document.querySelector('nav');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 100) {
+                    nav.style.padding = '10px 0';
+                    nav.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+                } else {
+                    nav.style.padding = '15px 0';
+                    nav.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+                }
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
 </body>
 </html>
